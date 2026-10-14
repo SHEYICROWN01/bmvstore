@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bmv-navy: #082B5B;
+    --bmv-navy-dark: #041C3D;
+    --bmv-red: #F20D25;
+    --bmv-red-hover: #D6091E;
+    --bmv-light-blue: #F0F6FF;
+    --bmv-soft-grey: #F5F7FA;
+    --bmv-border: #E1E7EF;
+    --bmv-text-primary: #17243A;
+    --bmv-text-secondary: #667085;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    color: #17243A;
+    background-color: #FFFFFF;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}

@@ -1,0 +1,6 @@
+{
+  "name": "BMV Solar & Security",
+  "description": "Premium e-commerce platform for solar energy products, inverters, lithium batteries, CCTV surveillance systems, and professional installation services.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
