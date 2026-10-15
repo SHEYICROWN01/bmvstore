@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Menu, ChevronDown, FileText, ChevronRight } from 'lucide-react';
 import { useShop } from '../../context/ShopContext';
 import { categories } from '../../data/categories';
+import { SafeImage } from '../common/SafeImage';
 
 export const Navbar: React.FC = () => {
   const {
@@ -54,7 +55,7 @@ export const Navbar: React.FC = () => {
                     className="w-full text-left px-4 py-2.5 hover:bg-blue-50/70 hover:text-[#082B5B] flex items-center justify-between text-xs font-semibold transition-colors group cursor-pointer"
                   >
                     <div className="flex items-center gap-3">
-                      <img src={cat.image} alt={cat.name} className="w-6 h-6 object-cover rounded shadow-xs" />
+                      <SafeImage src={cat.image} alt={cat.name} productCategory={cat.slug} className="w-6 h-6 object-cover rounded shadow-xs" />
                       <span>{cat.name}</span>
                     </div>
                     <ChevronRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#F20D25] group-hover:translate-x-0.5 transition-all" />

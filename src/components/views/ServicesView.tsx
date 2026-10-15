@@ -3,6 +3,7 @@ import { Sun, Video, Wrench, FileQuestion, CheckCircle2, ArrowRight } from 'luci
 import { services } from '../../data/services';
 import { useShop } from '../../context/ShopContext';
 import technicianHero from '../../assets/images/hero_solar_technician_1791986576183.jpg';
+import { SafeImage } from '../common/SafeImage';
 
 export const ServicesView: React.FC = () => {
   const { setQuoteModalOpen, setConsultationModalOpen, setCurrentPage } = useShop();
@@ -14,7 +15,7 @@ export const ServicesView: React.FC = () => {
         {/* Hero Header */}
         <div className="relative rounded-3xl overflow-hidden bg-[#041C3D] text-white p-8 sm:p-12 shadow-xl">
           <div className="absolute right-0 top-0 bottom-0 w-1/2 opacity-30 pointer-events-none">
-            <img src={technicianHero} alt="BMV Solar Engineers" className="w-full h-full object-cover" />
+            <SafeImage src={technicianHero} alt="BMV Solar Engineers" fallbackType="technician" className="w-full h-full object-cover" />
           </div>
           <div className="relative z-10 max-w-xl space-y-4">
             <span className="text-xs font-bold text-[#F20D25] uppercase tracking-widest">

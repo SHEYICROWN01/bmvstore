@@ -2,6 +2,7 @@ import React from 'react';
 import { ShieldCheck, Award, Users, CheckCircle2 } from 'lucide-react';
 import { useShop } from '../../context/ShopContext';
 import heroHome from '../../assets/images/hero_modern_solar_home_1791986574405.jpg';
+import { SafeImage } from '../common/SafeImage';
 
 export const AboutView: React.FC = () => {
   const { setQuoteModalOpen, setCurrentPage } = useShop();
@@ -25,7 +26,7 @@ export const AboutView: React.FC = () => {
 
         {/* Feature Image Banner */}
         <div className="rounded-3xl overflow-hidden aspect-[21/9] max-h-[420px] shadow-lg relative">
-          <img src={heroHome} alt="BMV Solar installation" className="w-full h-full object-cover" />
+          <SafeImage src={heroHome} alt="BMV Solar installation" fallbackType="banner" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-8 text-white">
             <p className="text-base sm:text-lg font-bold">
               Over 1,200+ residential and commercial power installations executed with 99.4% client satisfaction.

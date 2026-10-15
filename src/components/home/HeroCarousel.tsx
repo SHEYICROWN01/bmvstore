@@ -5,6 +5,7 @@ import { useShop } from '../../context/ShopContext';
 import heroSolarHome from '../../assets/images/hero_modern_solar_home_1791986574405.jpg';
 import heroCctv from '../../assets/images/hero_cctv_security_1791986574296.jpg';
 import heroTechnician from '../../assets/images/hero_solar_technician_1791986576183.jpg';
+import { SafeImage } from '../common/SafeImage';
 
 interface HeroSlide {
   id: number;
@@ -135,40 +136,41 @@ export const HeroCarousel: React.FC = () => {
       onTouchEnd={handleTouchEnd}
     >
       {/* Background Images with smooth fade */}
-      <div className="relative min-h-[460px] sm:min-h-[520px] md:min-h-[560px] lg:h-[600px] w-full flex items-center">
+      <div className="relative min-h-[380px] xs:min-h-[400px] sm:min-h-[480px] md:min-h-[520px] lg:h-[580px] w-full flex items-center overflow-hidden">
         {slides.map((slide, idx) => (
           <div
             key={slide.id}
-            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+            className={`absolute inset-0 overflow-hidden transition-opacity duration-1000 ease-in-out ${
               idx === currentSlideIndex ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
             }`}
           >
-            <img
+            <SafeImage
               src={slide.image}
               alt="BMV Solar & Security"
+              fallbackType="banner"
               className="w-full h-full object-cover object-center scale-105 transition-transform duration-7000 ease-out"
             />
             {/* Scrim Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-r from-[#041C3D]/95 via-[#041C3D]/85 to-[#041C3D]/60 sm:to-transparent sm:w-4/5 lg:w-3/5" />
-            <div className="absolute inset-0 bg-[#041C3D]/35" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#041C3D]/95 via-[#041C3D]/80 to-[#041C3D]/50 sm:to-transparent sm:w-4/5 lg:w-3/5" />
+            <div className="absolute inset-0 bg-[#041C3D]/30" />
           </div>
         ))}
 
         {/* Content Container */}
-        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 md:py-16 w-full">
+        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pb-12 sm:py-12 md:py-16 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
             
             {/* Headline & CTAs */}
-            <div className="lg:col-span-7 xl:col-span-8 text-white space-y-3.5 sm:space-y-5 max-w-2xl">
+            <div className="lg:col-span-7 xl:col-span-8 text-white space-y-3 sm:space-y-4 md:space-y-5 max-w-2xl">
               
               {/* Kicker Tagline */}
               <div className="inline-flex items-center gap-1.5 text-[10px] sm:text-xs font-bold tracking-widest uppercase text-blue-200">
-                <span className="w-2 h-2 rounded-full bg-[#F20D25]" />
-                <span>{currentSlide.kicker}</span>
+                <span className="w-2 h-2 rounded-full bg-[#F20D25] shrink-0" />
+                <span className="truncate">{currentSlide.kicker}</span>
               </div>
 
               {/* Main Headline */}
-              <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-[52px] font-black tracking-tight leading-[1.18] sm:leading-[1.12] text-white whitespace-pre-line text-balance">
+              <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-black tracking-tight leading-[1.16] sm:leading-[1.12] text-white whitespace-pre-line text-balance">
                 {currentSlide.titlePrefix}
                 <span className="text-[#F20D25]">{currentSlide.titleHighlight}</span>
                 {currentSlide.titleSuffix || ''}
@@ -179,11 +181,11 @@ export const HeroCarousel: React.FC = () => {
                 {currentSlide.description}
               </p>
 
-              {/* CTA Action Buttons: side-by-side on mobile and desktop */}
-              <div className="pt-2 flex items-center gap-2.5 sm:gap-4">
+              {/* CTA Action Buttons: side-by-side on mobile and desktop without overflow */}
+              <div className="pt-1.5 sm:pt-2 flex flex-wrap items-center gap-2 sm:gap-3.5">
                 <button
                   onClick={() => handlePrimaryClick(currentSlide.primaryCtaAction)}
-                  className="h-11 sm:h-12 px-5 sm:px-7 bg-[#F20D25] hover:bg-[#D6091E] text-white font-bold text-xs sm:text-sm rounded-lg flex items-center justify-center gap-1.5 shadow-lg transition-all active:scale-95 cursor-pointer"
+                  className="h-10 sm:h-12 px-4 sm:px-6 bg-[#F20D25] hover:bg-[#D6091E] text-white font-bold text-xs sm:text-sm rounded-lg flex items-center justify-center gap-1.5 shadow-lg transition-all active:scale-95 cursor-pointer shrink-0"
                 >
                   <span>{currentSlide.primaryCtaText}</span>
                   <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
@@ -191,7 +193,7 @@ export const HeroCarousel: React.FC = () => {
 
                 <button
                   onClick={() => handleSecondaryClick(currentSlide.secondaryCtaAction)}
-                  className="h-11 sm:h-12 px-4 sm:px-6 bg-white/10 hover:bg-white/20 border border-white/25 text-white font-bold text-xs sm:text-sm rounded-lg backdrop-blur-xs transition-all active:scale-95 cursor-pointer"
+                  className="h-10 sm:h-12 px-3.5 sm:px-5 bg-white/10 hover:bg-white/20 border border-white/25 text-white font-bold text-xs sm:text-sm rounded-lg backdrop-blur-xs transition-all active:scale-95 cursor-pointer shrink-0"
                 >
                   <span>{currentSlide.secondaryCtaText}</span>
                 </button>
@@ -314,13 +316,13 @@ export const HeroCarousel: React.FC = () => {
         </button>
 
         {/* Dot Indicators */}
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-30 flex items-center gap-2">
+        <div className="absolute bottom-3 sm:bottom-4 left-1/2 -translate-x-1/2 z-30 flex items-center gap-1.5 sm:gap-2">
           {slides.map((_, i) => (
             <button
               key={i}
               onClick={() => setCurrentSlideIndex(i)}
-              className={`h-2 rounded-full transition-all cursor-pointer ${
-                i === currentSlideIndex ? 'w-6 bg-[#F20D25]' : 'w-2 bg-white/50 hover:bg-white'
+              className={`h-1.5 sm:h-2 rounded-full transition-all cursor-pointer ${
+                i === currentSlideIndex ? 'w-5 sm:w-6 bg-[#F20D25]' : 'w-1.5 sm:w-2 bg-white/50 hover:bg-white'
               }`}
               aria-label={`Go to slide ${i + 1}`}
             />

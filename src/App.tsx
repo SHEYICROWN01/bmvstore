@@ -10,6 +10,7 @@ import { MobileNavDrawer } from './components/layout/MobileNavDrawer';
 import { HeroCarousel } from './components/home/HeroCarousel';
 import { TrustBenefitsStrip } from './components/home/TrustBenefitsStrip';
 import { ShopByCategory } from './components/home/ShopByCategory';
+import { HotDealsSection } from './components/home/HotDealsSection';
 import { PromotionalBanners } from './components/home/PromotionalBanners';
 import { FeaturedProducts } from './components/home/FeaturedProducts';
 import { OurServices } from './components/home/OurServices';
@@ -37,7 +38,7 @@ const MainContent: React.FC = () => {
   const { currentPage, selectedProduct } = useShop();
 
   return (
-    <div className="min-h-screen flex flex-col bg-white text-[#17243A]">
+    <div className="min-h-screen flex flex-col bg-white text-[#17243A] w-full overflow-x-hidden">
       <AnnouncementBar />
       <Header />
       <Navbar />
@@ -48,6 +49,7 @@ const MainContent: React.FC = () => {
             <HeroCarousel />
             <TrustBenefitsStrip />
             <ShopByCategory />
+            <HotDealsSection />
             <PromotionalBanners />
             <FeaturedProducts />
             <OurServices />
@@ -73,15 +75,15 @@ const MainContent: React.FC = () => {
 
       <Footer />
 
-      {/* Floating WhatsApp Quick Action Button */}
+      {/* Floating WhatsApp Quick Action Button - positioned bottom right so it NEVER blocks content */}
       <a
         href="https://wa.me/2348101234567?text=Hello%20BMV,%20I%20would%20like%20to%20enquire%20about%20your%20solar%20and%20CCTV%20solutions"
         target="_blank"
         rel="noreferrer"
-        className="fixed bottom-6 left-6 z-40 bg-[#25D366] hover:bg-[#1EBE5D] text-white p-3.5 rounded-full shadow-2xl flex items-center gap-2 group transition-all active:scale-95"
+        className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 bg-[#25D366] hover:bg-[#1EBE5D] text-white p-3 sm:p-3.5 rounded-full shadow-2xl flex items-center gap-2 group transition-all active:scale-95"
         aria-label="Chat on WhatsApp"
       >
-        <MessageCircle className="w-6 h-6 fill-white" />
+        <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6 fill-white" />
         <span className="hidden sm:inline font-bold text-xs pr-1">Chat on WhatsApp</span>
       </a>
 

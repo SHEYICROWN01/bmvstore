@@ -1,5 +1,5 @@
 import React from 'react';
-import { X, ChevronRight, Phone, Mail, MessageCircle, FileText, Home, ShoppingCart, Shield, Sun, Wrench, Info } from 'lucide-react';
+import { X, ChevronRight, Phone, Mail, MessageCircle, FileText, Home, ShoppingCart, Shield, Sun, Wrench, Info, User } from 'lucide-react';
 import { useShop } from '../../context/ShopContext';
 import { BmvLogo } from '../common/BmvLogo';
 import { categories } from '../../data/categories';
@@ -36,6 +36,28 @@ export const MobileNavDrawer: React.FC = () => {
             aria-label="Close menu"
           >
             <X className="w-5 h-5" />
+          </button>
+        </div>
+
+        {/* Account / Profile Access */}
+        <div className="px-4 py-2.5 bg-slate-50/80 border-b border-slate-100 flex items-center justify-between">
+          <div className="flex items-center gap-2.5">
+            <div className="w-7 h-7 rounded-full bg-blue-100 flex items-center justify-center text-[#082B5B]">
+              <User className="w-3.5 h-3.5" />
+            </div>
+            <div>
+              <p className="text-xs font-bold text-[#17243A]">Account</p>
+              <p className="text-[10px] text-slate-500">Sign in / Register</p>
+            </div>
+          </div>
+          <button
+            onClick={() => {
+              setCurrentPage('contact');
+              setMobileMenuOpen(false);
+            }}
+            className="text-xs font-bold text-[#082B5B] hover:text-[#F20D25] px-2.5 py-1 rounded bg-white border border-slate-200 hover:border-[#082B5B] transition-colors"
+          >
+            Login
           </button>
         </div>
 

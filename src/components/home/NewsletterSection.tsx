@@ -41,7 +41,7 @@ export const NewsletterSection: React.FC = () => {
           </div>
 
           {/* Right: Input Form */}
-          <div className="w-full lg:w-auto min-w-[320px] sm:min-w-[420px]">
+          <div className="w-full lg:w-auto max-w-md lg:min-w-[380px]">
             {subscribed ? (
               <div className="bg-emerald-950/60 border border-emerald-500/40 p-4 rounded-xl flex items-center gap-3 text-emerald-200 text-sm">
                 <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />

@@ -3,7 +3,7 @@ import { Phone, Mail, Clock, Facebook, Instagram, Youtube, Sparkles } from 'luci
 
 export const AnnouncementBar: React.FC = () => {
   return (
-    <div className="bg-[#041C3D] text-white text-[12px] border-b border-blue-950/40">
+    <div className="hidden md:block bg-[#041C3D] text-white text-[12px] border-b border-blue-950/40">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex flex-col md:flex-row justify-between items-center gap-2">
         {/* Left message */}
         <div className="flex items-center gap-2 font-medium text-blue-100/90 text-center md:text-left">

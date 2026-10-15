@@ -2,6 +2,7 @@ import React from 'react';
 import { Star, Heart, ShoppingCart } from 'lucide-react';
 import { Product } from '../../types';
 import { useShop } from '../../context/ShopContext';
+import { SafeImage } from '../common/SafeImage';
 
 interface ProductCardProps {
   product: Product;
@@ -60,9 +61,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
       {/* Product Image */}
       <div className="w-full aspect-square bg-[#F8FAFC] rounded-lg p-3 mb-3 flex items-center justify-center overflow-hidden">
-        <img
+        <SafeImage
           src={product.images[0]}
           alt={product.name}
+          productCategory={product.category}
+          brandText={product.brand}
           className="w-full h-full object-contain group-hover:scale-106 transition-transform duration-300"
           loading="lazy"
         />

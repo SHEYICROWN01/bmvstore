@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { X, Trash2, ShoppingBag, ArrowRight, ShieldCheck, Tag } from 'lucide-react';
 import { useShop } from '../../context/ShopContext';
+import { SafeImage } from '../common/SafeImage';
 
 export const CartDrawer: React.FC = () => {
   const {
@@ -96,9 +97,11 @@ export const CartDrawer: React.FC = () => {
               <div className="space-y-4 pt-1">
                 {cart.map((item) => (
                   <div key={item.product.id} className="pt-3 first:pt-0 flex gap-3">
-                    <img
+                    <SafeImage
                       src={item.product.images[0]}
                       alt={item.product.name}
+                      productCategory={item.product.category}
+                      brandText={item.product.brand}
                       onClick={() => {
                         navigateToProduct(item.product.id);
                         setCartDrawerOpen(false);

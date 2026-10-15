@@ -2,6 +2,7 @@ import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import { categories } from '../../data/categories';
 import { useShop } from '../../context/ShopContext';
+import { SafeImage } from '../common/SafeImage';
 
 export const ShopByCategory: React.FC = () => {
   const { navigateToCategory, setSelectedCategoryFilter, setCurrentPage } = useShop();
@@ -34,31 +35,29 @@ export const ShopByCategory: React.FC = () => {
           </button>
         </div>
 
-        {/* Category Grid: 3 cols on mobile (Reference Image 3 Screen 1), 5 cols on desktop */}
-        <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2.5 sm:gap-4 lg:gap-5">
-          {categories.slice(0, 9).map((category) => (
+        {/* Small Circular Categories Grid: 4 cols on mobile, 5 on tablet, 10 on desktop */}
+        <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-10 gap-x-2 gap-y-3.5 sm:gap-x-4 sm:gap-y-5 lg:gap-4 items-start justify-items-center">
+          {categories.map((category) => (
             <div
               key={category.id}
               onClick={() => navigateToCategory(category.slug)}
-              className="group bg-[#F8FAFC] hover:bg-white border border-[#E2E8F0] hover:border-[#082B5B]/30 rounded-xl p-2 sm:p-3.5 flex flex-col items-center text-center transition-all duration-200 hover:shadow-md cursor-pointer"
+              className="group flex flex-col items-center text-center cursor-pointer p-0.5 transition-transform duration-200 active:scale-95 w-full max-w-[85px] sm:max-w-[105px]"
             >
-              {/* Image Box */}
-              <div className="w-full aspect-square rounded-lg bg-white p-1.5 sm:p-2 mb-1.5 sm:mb-2.5 overflow-hidden flex items-center justify-center border border-slate-100">
-                <img
+              {/* Circular Avatar / Image Container */}
+              <div className="w-14 h-14 min-[375px]:w-16 min-[375px]:h-16 sm:w-20 sm:h-20 rounded-full bg-slate-50 border-2 border-slate-200 group-hover:border-[#F20D25] group-hover:bg-red-50/20 p-2 sm:p-2.5 overflow-hidden flex items-center justify-center transition-all duration-200 shadow-xs group-hover:shadow-md group-hover:scale-105 shrink-0">
+                <SafeImage
                   src={category.image}
                   alt={category.name}
-                  className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-200"
+                  productCategory={category.slug}
+                  className="w-full h-full object-contain rounded-full transition-transform duration-200"
                   loading="lazy"
                 />
               </div>
 
-              {/* Title & Subtitle */}
-              <h3 className="text-[11px] sm:text-sm font-bold text-[#082B5B] group-hover:text-[#F20D25] transition-colors line-clamp-1 leading-tight">
+              {/* Category Name */}
+              <span className="text-[10px] min-[375px]:text-[11px] sm:text-xs font-semibold text-[#082B5B] group-hover:text-[#F20D25] transition-colors leading-tight text-center mt-1.5 line-clamp-2 w-full break-words">
                 {category.name}
-              </h3>
-              <p className="hidden sm:block text-[11px] text-slate-500 mt-0.5 line-clamp-1">
-                {category.subtitle}
-              </p>
+              </span>
             </div>
           ))}
         </div>

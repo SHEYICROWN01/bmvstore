@@ -2,6 +2,7 @@ import React from 'react';
 import { X, Play, CheckCircle2 } from 'lucide-react';
 import { useShop } from '../../context/ShopContext';
 import storyBanner from '../../assets/images/solar_home_sunny_story_1791986627795.jpg';
+import { SafeImage } from '../common/SafeImage';
 
 export const StoryVideoModal: React.FC = () => {
   const { storyModalOpen, setStoryModalOpen, setQuoteModalOpen } = useShop();
@@ -35,9 +36,10 @@ export const StoryVideoModal: React.FC = () => {
 
           {/* Video Mockup Frame */}
           <div className="relative rounded-xl overflow-hidden aspect-video bg-black/80 border border-white/10 flex items-center justify-center group">
-            <img
+            <SafeImage
               src={storyBanner}
               alt="BMV Nigerian Solar Installations"
+              fallbackType="banner"
               className="w-full h-full object-cover opacity-80"
             />
             <div className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center p-6 text-center">

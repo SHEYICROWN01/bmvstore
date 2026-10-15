@@ -3,6 +3,7 @@ import { ArrowRight, CheckCircle2 } from 'lucide-react';
 import { useShop } from '../../context/ShopContext';
 import bannerSolarImg from '../../assets/images/banner_solar_power_savings_1791986627047.jpg';
 import bannerCctvImg from '../../assets/images/banner_cctv_security_system_1791986627522.jpg';
+import { SafeImage } from '../common/SafeImage';
 
 export const PromotionalBanners: React.FC = () => {
   const { navigateToCategory, setSelectedCategoryFilter, setCurrentPage } = useShop();
@@ -17,9 +18,10 @@ export const PromotionalBanners: React.FC = () => {
             
             {/* Background image preview with soft gradient overlay */}
             <div className="absolute right-0 top-0 bottom-0 w-1/2 opacity-30 sm:opacity-40 group-hover:opacity-50 transition-opacity pointer-events-none">
-              <img
+              <SafeImage
                 src={bannerSolarImg}
                 alt="Solar Solutions"
+                fallbackType="banner"
                 className="w-full h-full object-cover object-left"
               />
             </div>
@@ -70,9 +72,10 @@ export const PromotionalBanners: React.FC = () => {
             
             {/* Background image preview with soft gradient overlay */}
             <div className="absolute right-0 top-0 bottom-0 w-1/2 opacity-25 sm:opacity-35 group-hover:opacity-45 transition-opacity pointer-events-none">
-              <img
+              <SafeImage
                 src={bannerCctvImg}
                 alt="CCTV Security"
+                fallbackType="cctv"
                 className="w-full h-full object-cover object-left"
               />
             </div>

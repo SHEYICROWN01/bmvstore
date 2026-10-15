@@ -10,12 +10,12 @@ export const BmvLogo: React.FC<BmvLogoProps> = ({ className = '', variant = 'lig
   const isDark = variant === 'dark';
 
   return (
-    <div className={`flex items-center gap-2 select-none group cursor-pointer ${className}`}>
+    <div className={`flex items-center gap-1.5 sm:gap-2 select-none group cursor-pointer ${className}`}>
       {/* Brand Icon: Solar Panels & Shield Arc */}
       <div className="relative shrink-0 flex items-center justify-center">
         <svg
           viewBox="0 0 54 44"
-          className={size === 'sm' ? 'h-8 w-auto' : size === 'lg' ? 'h-12 w-auto' : 'h-10 w-auto'}
+          className={size === 'sm' ? 'h-7 sm:h-8 w-auto' : size === 'lg' ? 'h-11 sm:h-12 w-auto' : 'h-9 sm:h-10 w-auto'}
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -44,15 +44,19 @@ export const BmvLogo: React.FC<BmvLogoProps> = ({ className = '', variant = 'lig
       {/* Brand Typography */}
       <div className="flex flex-col shrink-0">
         <div className="flex items-baseline tracking-tighter font-black leading-none">
-          <span className={`text-xl sm:text-2xl font-black ${isDark ? 'text-white' : 'text-[#082B5B]'}`}>
+          <span className={`font-black ${size === 'sm' ? 'text-lg sm:text-2xl' : 'text-xl sm:text-2xl'} ${isDark ? 'text-white' : 'text-[#082B5B]'}`}>
             BM
           </span>
-          <span className="text-xl sm:text-2xl font-black text-[#F20D25]">
+          <span className={`font-black text-[#F20D25] ${size === 'sm' ? 'text-lg sm:text-2xl' : 'text-xl sm:text-2xl'}`}>
             V
           </span>
         </div>
         <span
-          className={`text-[7px] sm:text-[8px] font-extrabold tracking-[0.14em] uppercase leading-tight mt-0.5 whitespace-nowrap ${
+          className={`font-extrabold uppercase leading-tight mt-0.5 whitespace-nowrap ${
+            size === 'sm'
+              ? 'text-[6.5px] sm:text-[8px] tracking-[0.06em] sm:tracking-[0.14em]'
+              : 'text-[7px] sm:text-[8px] tracking-[0.14em]'
+          } ${
             isDark ? 'text-blue-200' : 'text-[#082B5B]/85'
           }`}
         >

@@ -3,6 +3,7 @@ import { Search, User, Heart, ShoppingBag, Menu, X, ArrowRight } from 'lucide-re
 import { useShop } from '../../context/ShopContext';
 import { BmvLogo } from '../common/BmvLogo';
 import { products } from '../../data/products';
+import { SafeImage } from '../common/SafeImage';
 
 export const Header: React.FC = () => {
   const {
@@ -58,23 +59,23 @@ export const Header: React.FC = () => {
   };
 
   return (
-    <header className="bg-white border-b border-[#E1E7EF] sticky top-0 z-40 shadow-xs">
-      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-2.5 sm:py-3.5">
+    <header className="bg-white border-b border-[#E1E7EF] sticky top-0 z-40 shadow-xs w-full">
+      <div className="max-w-7xl mx-auto px-2.5 sm:px-6 lg:px-8 py-2 sm:py-3.5">
         
         {/* Top Header Row */}
-        <div className="flex items-center justify-between gap-2 sm:gap-4 lg:gap-8">
+        <div className="flex items-center justify-between gap-1.5 sm:gap-4 lg:gap-8">
           
           {/* Mobile Menu Button + Brand Logo */}
-          <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
+          <div className="flex items-center gap-1 sm:gap-2.5 shrink-0 min-w-0">
             <button
               onClick={() => setMobileMenuOpen(true)}
-              className="lg:hidden p-2 text-slate-700 hover:text-[#082B5B] hover:bg-slate-100 rounded-lg transition-colors cursor-pointer"
+              className="lg:hidden p-1.5 sm:p-2 text-slate-700 hover:text-[#082B5B] hover:bg-slate-100 rounded-lg transition-colors cursor-pointer shrink-0"
               aria-label="Open menu"
             >
               <Menu className="w-5 h-5 sm:w-6 sm:h-6" />
             </button>
 
-            <div onClick={() => setCurrentPage('home')}>
+            <div onClick={() => setCurrentPage('home')} className="shrink-0">
               <BmvLogo size="sm" className="sm:hidden" />
               <BmvLogo size="md" className="hidden sm:flex" />
             </div>
@@ -128,9 +129,11 @@ export const Header: React.FC = () => {
                         }}
                         className="flex items-center gap-3 p-3 hover:bg-blue-50/50 cursor-pointer transition-colors"
                       >
-                        <img
+                        <SafeImage
                           src={item.images[0]}
                           alt={item.name}
+                          productCategory={item.category}
+                          brandText={item.brand}
                           className="w-12 h-12 object-contain bg-slate-50 rounded-lg p-1 border border-slate-100"
                         />
                         <div className="flex-1 min-w-0">
@@ -161,7 +164,7 @@ export const Header: React.FC = () => {
           </div>
 
           {/* Action Icons (Desktop & Mobile - matches Reference Image 3: Search, User, Cart) */}
-          <div className="flex items-center gap-1.5 sm:gap-3 lg:gap-6 shrink-0">
+          <div className="flex items-center gap-1 sm:gap-2.5 lg:gap-6 shrink-0">
             
             {/* Mobile Search Toggle Button */}
             <button
@@ -171,19 +174,19 @@ export const Header: React.FC = () => {
                   setTimeout(() => mobileSearchInputRef.current?.focus(), 100);
                 }
               }}
-              className="md:hidden w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-700 transition-colors cursor-pointer"
+              className="md:hidden w-8.5 h-8.5 sm:w-10 sm:h-10 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-700 transition-colors cursor-pointer shrink-0"
               aria-label="Toggle search"
             >
-              <Search className="w-4 h-4" />
+              <Search className="w-4 h-4 sm:w-5 sm:h-5" />
             </button>
 
-            {/* Account / User */}
+            {/* Account / User (Desktop & Tablet - on mobile accessible via drawer) */}
             <button
               onClick={() => setCurrentPage('contact')}
-              className="flex items-center gap-2 cursor-pointer group py-1"
+              className="hidden sm:flex items-center gap-2 cursor-pointer group py-1 shrink-0"
               aria-label="Account"
             >
-              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-slate-100 group-hover:bg-blue-50 flex items-center justify-center text-slate-700 group-hover:text-[#082B5B] transition-colors">
+              <div className="w-8.5 h-8.5 sm:w-10 sm:h-10 rounded-full bg-slate-100 group-hover:bg-blue-50 flex items-center justify-center text-slate-700 group-hover:text-[#082B5B] transition-colors">
                 <User className="w-4 h-4 sm:w-5 sm:h-5" />
               </div>
               <div className="hidden xl:flex flex-col text-left">
@@ -198,7 +201,7 @@ export const Header: React.FC = () => {
                 setSelectedCategoryFilter('all');
                 setCurrentPage('shop');
               }}
-              className="hidden sm:flex items-center gap-2 cursor-pointer group py-1 relative"
+              className="hidden sm:flex items-center gap-2 cursor-pointer group py-1 relative shrink-0"
               aria-label="Wishlist"
             >
               <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-slate-100 group-hover:bg-rose-50 flex items-center justify-center text-slate-700 group-hover:text-[#F20D25] transition-colors relative">
@@ -220,12 +223,12 @@ export const Header: React.FC = () => {
             {/* Shopping Cart Button */}
             <button
               onClick={() => setCartDrawerOpen(true)}
-              className="flex items-center gap-2 cursor-pointer group py-1"
+              className="flex items-center gap-2 cursor-pointer group py-1 shrink-0 relative pr-1 sm:pr-0"
               aria-label="Cart"
             >
-              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-red-50 group-hover:bg-red-100 flex items-center justify-center text-[#F20D25] transition-colors relative">
+              <div className="w-8.5 h-8.5 sm:w-10 sm:h-10 rounded-full bg-red-50 group-hover:bg-red-100 flex items-center justify-center text-[#F20D25] transition-colors relative">
                 <ShoppingBag className="w-4 h-4 sm:w-5 sm:h-5" />
-                <span className="absolute -top-1 -right-1 w-4 h-4 sm:w-5 sm:h-5 bg-[#F20D25] text-white text-[10px] sm:text-[11px] font-bold rounded-full flex items-center justify-center ring-2 ring-white">
+                <span className="absolute -top-1 -right-0.5 w-4 h-4 sm:w-5 sm:h-5 bg-[#F20D25] text-white text-[9px] sm:text-[11px] font-bold rounded-full flex items-center justify-center ring-2 ring-white shadow-xs">
                   {cartCount}
                 </span>
               </div>

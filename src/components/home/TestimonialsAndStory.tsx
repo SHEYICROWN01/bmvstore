@@ -3,6 +3,7 @@ import { Play, Star, ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 import { customerTestimonials } from '../../data/services';
 import { useShop } from '../../context/ShopContext';
 import storyThumbnail from '../../assets/images/solar_home_sunny_story_1791986627795.jpg';
+import { SafeImage } from '../common/SafeImage';
 
 export const TestimonialsAndStory: React.FC = () => {
   const { setStoryModalOpen } = useShop();
@@ -26,9 +27,10 @@ export const TestimonialsAndStory: React.FC = () => {
             onClick={() => setStoryModalOpen(true)}
             className="lg:col-span-5 relative rounded-2xl overflow-hidden min-h-[300px] shadow-lg group cursor-pointer"
           >
-            <img
+            <SafeImage
               src={storyThumbnail}
               alt="BMV Solar Installations across Nigeria"
+              fallbackType="banner"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
             />
             
